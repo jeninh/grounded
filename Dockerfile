@@ -1,5 +1,5 @@
 # Stage 1: Build frontend
-FROM node:18 AS builder
+FROM node:22.23.4 AS builder
 
 WORKDIR /app
 COPY . .
@@ -7,7 +7,7 @@ RUN npm install --legacy-peer-deps
 RUN npm run build
 
 # Stage 2: Run backend
-FROM node:18
+FROM node:22.23.4
 
 WORKDIR /app
 COPY --from=builder /app /app
